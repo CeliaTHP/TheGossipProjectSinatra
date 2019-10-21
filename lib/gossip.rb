@@ -1,38 +1,33 @@
-require 'pry'
 require 'csv'
+require 'pry'
 
 class Gossip
-attr_accessor :author, :content
 
-def initialize(author, content)
-@author = author
-@content = content
-end
+  attr_accessor :author, :content, :id
 
-def save
-  CSV.open("./db/gossip.csv", "ab") do |csv|
-   csv << [@author, @content]
+  def initialize (author, content)
+    @author = author
+    @content = content
   end
-end
 
-def self.all
-  all_gossips = []
-  CSV.read("./db/gossip.csv").each do |csv_line|
-    all_gossips << Gossip.new(csv_line[0], csv_line[1])
+  def save
+ CSV.open("./db/gossip.csv", "ab") do |csv|
+      csv << [@author, @content]
+    end
   end
-  return all_gossips
-end
 
-def self.find(num)
- x = 1
- Gossip.all.each do |id|
- if (num.to_i == x)
-   return id
-   break
+  def self.all
+    all_gossips = []
+    CSV.read("./db/gossip.csv").each do |csv_line|
+      all_gossips << Gossip.new(csv_line[0], csv_line[1])
+    end
+    return all_gossips
   end
- x += 1
-end
-end
+
+  def self.find (id)
+    return Gossip.all[id]
+  end
+
 end
 
-binding.pry
+#binding.pry
