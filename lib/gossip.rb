@@ -3,7 +3,7 @@ require 'pry'
 
 class Gossip
 
-  attr_accessor :author, :content, :id
+  attr_accessor :author, :content
 
   def initialize (author, content)
     @author = author
@@ -24,8 +24,8 @@ class Gossip
     return all_gossips
   end
 
-  def self.find (id)
-    return Gossip.all[id]
+  def self.find(id)
+    return self.all[id.to_i]
   end
 
 end
