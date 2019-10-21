@@ -9,3 +9,5 @@ localhost:4567/gossips/new pour créer un gossip
 localhost:4567/gossips/id pages persos des gossips
 
 Methodes fonctionnelles : Gossip.new, Gossip.save, Gossip.all, Gossip.find
+
+need edit
